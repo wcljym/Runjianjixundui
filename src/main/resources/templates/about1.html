@@ -1,0 +1,159 @@
+<!DOCTYPE >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>关于我们</title>
+
+
+</head>
+<body  style="background:#f1f1f1 ">
+
+<section id="cd-timeline" class="cd-container">
+
+    <div id="eee" th:each="about : ${elist}" class="cd-timeline-block">
+        <input id="aaa" type="hidden" th:value="${about}">
+
+
+        <div class="cd-timeline-img cd-picture">
+            <img  th:src="@{../about/images/cd-icon-picture.svg}" src="images/cd-icon-picture.svg" alt="Picture">
+        </div><!-- cd-timeline-img -->
+
+        <div class="cd-timeline-content">
+            <h2 th:text="${about.title}"> 1</h2>
+
+            <div id="con" >
+                <input  id="content" type="hidden" th:value="${about.copy}">
+
+            </div>
+            <img id="img" th:src="${about.img}" src="images/1942-1000x670.jpg" />
+            <span th:text="${about.date}" class="cd-date">Jan 14</span>
+        </div>
+
+
+    </div>
+
+    <!--<div id="eee" class="cd-timeline-block">-->
+        <!--<input id="aaa" type="hidden" >-->
+
+
+        <!--<div class="cd-timeline-img cd-picture">-->
+            <!--<img  th:src="@{../about/images/cd-icon-picture.svg}" src="images/cd-icon-picture.svg" alt="Picture">-->
+        <!--</div>&lt;!&ndash; cd-timeline-img &ndash;&gt;-->
+
+        <!--<div class="cd-timeline-content">-->
+            <!--<h2 is> </h2>-->
+            <!--<div id="con" >-->
+                <!--<input  id="content" type="hidden" >-->
+
+            <!--</div>-->
+            <!--<img id="img"  src="images/1942-1000x670.jpg" />-->
+            <!--<span  class="cd-date"></span>-->
+        <!--</div>-->
+
+
+    <!--</div>-->
+
+    <!--<script>-->
+        <!--var list1=$("#eee").val();-->
+        <!--var i;-->
+        <!--alert(list1.length);-->
+        <!--for ( i=0;i<list1.length;i++){-->
+
+            <!--var co=$("#content").val();-->
+            <!--document.getElementById("con").innerHTML =co;-->
+        <!--}-->
+
+
+
+    <!--</script>-->
+</section> <!-- cd-timeline -->
+<script th:src="@{../layui/jquery-3.3.1.min.js}"></script>
+<script>
+    var co=$("#content").val();
+    document.getElementById("con").innerHTML =co;
+
+</script>
+
+
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+    <!--&lt;!&ndash;$(document).ready(function () {&ndash;&gt;-->
+    <!--&lt;!&ndash;$.ajax({&ndash;&gt;-->
+        <!--&lt;!&ndash;url:"/listAbouts",&ndash;&gt;-->
+        <!--&lt;!&ndash;dataTyp:"json",&ndash;&gt;-->
+        <!--&lt;!&ndash;type:"GET",&ndash;&gt;-->
+        <!--&lt;!&ndash;success:function (data) {&ndash;&gt;-->
+            <!--&lt;!&ndash;if (data.code==200){&ndash;&gt;-->
+                <!--&lt;!&ndash;var list1=data.list;&ndash;&gt;-->
+                <!--&lt;!&ndash;for (var i=0;i<list1.length;i++){&ndash;&gt;-->
+                    <!--&lt;!&ndash;$("#img").attr("src",data.list[i].title);&ndash;&gt;-->
+
+
+
+
+                <!--&lt;!&ndash;}&ndash;&gt;-->
+
+            <!--&lt;!&ndash;}&ndash;&gt;-->
+
+
+        <!--&lt;!&ndash;}&ndash;&gt;-->
+
+
+
+
+    <!--&lt;!&ndash;})&ndash;&gt;-->
+
+    <!--&lt;!&ndash;// var a=document.getElementById("eee");&ndash;&gt;-->
+    <!--&lt;!&ndash;// for (var i=0;i<=a.length;i++){&ndash;&gt;-->
+    <!--&lt;!&ndash;//     var co=$("#content").val();&ndash;&gt;-->
+    <!--&lt;!&ndash;//     document.getElementById("con").innerHTML =co;&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;})&ndash;&gt;-->
+
+
+
+<!--</script>-->
+
+<script>
+    $(function(){
+        var $timeline_block = $('.cd-timeline-block');
+        //hide timeline blocks which are outside the viewport
+        $timeline_block.each(function(){
+            if($(this).offset().top > $(window).scrollTop()+$(window).height()*0.75) {
+                $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+            }
+        });
+        //on scolling, show/animate timeline blocks when enter the viewport
+        $(window).on('scroll', function(){
+            $timeline_block.each(function(){
+                if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                }
+            });
+        });
+    });
+</script>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="ac-gf-footer-legal">
+                <div class="footer-legal-links">
+                    <a href="index.html">首页</a>
+                    <div class="bor-line"></div>
+                    <a href="#">产品服务</a>
+                    <div class="bor-line"></div>
+                    <a href="#">解决方案</a>
+                    <div class="bor-line"></div>
+                    <a href="news.html">新闻中心</a>
+                    <div class="bor-line"></div>
+                    <a href="#">关于我们</a>
+                </div>
+                <div class="footer-beizhu">Copyright © 2018 VR科技有限公司 鲁ICP备111111111号-8</div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

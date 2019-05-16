@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="images/favicon.png">
+    <link rel='icon' href='favicon.ico' type='image/x-ico'/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+
+    <!--<![endif]-->
+    <!--[if lte IE 8 ]>
+
+    <![endif]-->
+
+</head>
+<body>
+
+<form th:action="@{/search_resource}" method="post">
+    <div class="zySearch" id="zySearch"></div>
+</form>
+
+
+<div class="comarticle">
+    <div class="cg">
+
+
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="comarticle-right" style="border: 1px solid black">
+                <h1>软件下载</h1>
+                <ul th:each="resource :${elist}">
+
+                    <li style="height: 130px;border: 1px dashed  black">
+
+                        <a href="#" th:href="'/' + ${resource.id} + '/resource_info'">
+                            <strong th:text="${resource.software_name}">【adobe dreamweaver cs6 中文破解下载】DW破解版64位 /
+                                32位下载</strong>
+                            <span th:text="${resource.enunciation}">adobe dreamweaver cs6破解版是由Adobe公司推出的一款网页设计软件，他可以实现所见即所得的效果。新版的dreamweaver cs6改善了FTP的性能，能高效传输大体积文件，同时也支持HTML5代码。并且还使用了自适应网格版面创建页面...</span>
+                            <h1><em>更新时间：<em th:text="${resource.date}"></em> </em>软件大小: <em
+                                    th:text="${resource.size}"></em> </em></h1>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="more text-c mb-50" style="margin-top: 20px;width: 100%; text-align: center">
+    <div id="demo2" style=" width: 1190px;height: 50px">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a th:if="${not elist.isFirst()}" th:href="@{/resource(start=${elist.number -1})}"
+                       aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li th:each="i : ${#numbers.sequence(1, elist.totalPages)}"
+                    th:classappend="${(elist.number + 1) eq i} ? 'am-active' : ''">
+                    <a th:href="@{/resource(start=${i - 1})}"
+
+                       th:text="${i}" class="">1</a>
+                </li>
+
+                <li>
+                    <a th:if="${not elist.isLast()}" th:href="@{/resource(start=${elist.number+1})}"
+                       aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li><span th:utext="'共'+${elist.totalPages}+'页 / '+${elist.totalElements}+' 条'"></span></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+﻿
+<!--<footer style="margin-bottom: 0px">-->
+    <!--<div class="container">-->
+        <!--<div class="row">-->
+            <!--<div class="ac-gf-footer-legal">-->
+                <!--<div class="footer-legal-links">-->
+                    <!--<a href="index.html">首页</a>-->
+                    <!--<div class="bor-line"></div>-->
+                    <!--<a href="#">产品服务</a>-->
+                    <!--<div class="bor-line"></div>-->
+                    <!--<a href="#">解决方案</a>-->
+                    <!--<div class="bor-line"></div>-->
+                    <!--<a href="news.html">新闻中心</a>-->
+                    <!--<div class="bor-line"></div>-->
+                    <!--<a href="#">关于我们</a>-->
+                <!--</div>-->
+                <!--<div class="footer-beizhu">Copyright © 2018 VR科技有限公司 鲁ICP备111111111号-8</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</footer>-->
+
+<script type="text/javascript" th:src="@{../search/js/jquery-1.7.2.js}" src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript" th:src="@{../search/js/zySearch.js}" src="js/zySearch.js"></script>
+<script type="text/javascript">
+    $("#zySearch").zySearch({
+        "width": "400",
+        "height": "35   ",
+        "parentClass": "pageTitle",
+        "callback": function (keyword) {
+            console.info("搜索的关键字");
+            console.info(keyword);
+        }
+    });
+</script>
+
+
+<script th:src="@{../layui/jquery-3.3.1.min.js}"></script>
+<script th:src="@{../layui/layui.js}" src="../layui/layui.js"></script>
+
+<script>
+    layui.use(['carousel', 'form', 'laypage', 'layer'], function () {
+        var carousel = layui.carousel
+            , form = layui.form
+            , laypage = layui.laypage
+            , layer = layui.layer;
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

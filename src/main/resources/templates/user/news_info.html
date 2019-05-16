@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+        <div th:object="${News}">
+            <h1 th:text="*{title}"></h1>
+            <div id="con" >
+                <input  id="content" type="hidden" th:value="*{content}">
+
+            </div>
+
+
+
+
+        </div>
+
+<script th:src="@{../layui/jquery-3.3.1.min.js}"></script>
+<script>
+    var co=$("#content").val();
+    document.getElementById("con").innerHTML =co;
+
+
+</script>
+</body>
+</html>

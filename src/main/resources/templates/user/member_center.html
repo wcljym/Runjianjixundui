@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" data-th-fragment="header">
+
+<head th:replace="~{fragments/header :: header}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>个人中心</title>
+</head>
+
+<body style="background:#f1f1f1 ">
+
+<div class="container border1 nopadding margin10">
+    <div id="vertical_navigation" class="col-lg-3 background831312 nopadding">
+        <div class="dead_pic"><img th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}"
+                                   src="img/member_center/nopic.jpg.png"><br>
+            <span class="username"><span sec:authentication="name"></span></span></div>
+        <div class="usertype">用户角色:<span sec:authentication="principal.authorities"></span> </div>
+        <div class="menu">
+            <div class="menu_title"> 我的信息</div>
+            <div class="menu_list">
+                <ul class="list-unstyled">
+                    <li class="menu_list_on"><img th:src="@{../pro/img/member_center/left_icon_1.png}"
+                                                  src="img/member_center/left_icon_1.png"> <a
+                            th:href="'/' + ${#authentication.name} + '/personal'">基本信息</a></li>
+                    <li id="listClick2" class="" onClick="listClick(2)"><img
+                            th:src="@{../pro/img/member_center/left_icon_2.png}"
+                            src="img/member_center/left_icon_2.png"> <a
+                            th:href="@{/makephoto}">修改头像</a></li>
+                    <li><img th:src="@{../pro/img/member_center/left_icon_3.png}"
+                             src="img/member_center/left_icon_3.png"> <a
+                            th:href="@{/makepassword}">修改密码</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu_title"> 我的成绩</div>
+            <div class="menu_list">
+                <ul class="list-unstyled">
+                    <li id="listClick6" onClick="listClick(6)"><img
+                            th:src="@{../pro/img/member_center/left_icon_6.png}"
+                            src="img/member_center/left_icon_6.png"> <a
+                            th:href="'/' + ${#authentication.name} + '/chengji'">我的成绩</a></li>
+                    <li id="listClick5" class="" onClick="listClick(5)"><img
+                            th:src="@{../pro/img/member_center/left_icon_5.png}"
+                            src="img/member_center/left_icon_5.png"> <a
+                            th:href="'/' + ${#authentication.name} + '/qingjia'">在线请假</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-9">
+        <div class="my_info_title">我的资料
+        </div>
+        <div class="my_info_title_3">
+            <ul>
+                <li id="listClick_1" onClick="listClick(1)" style="border-bottom: 1px solid #C40521; color: black;">基本资料
+                </li>
+
+            </ul>
+        </div>
+        <div class="my_info_content">
+            <form th:action="@{/proInfo_update}" method="post">
+            <table class="my_info_content_care_table">
+                <tbody>
+                <tr>
+                    <td width="90" align="right" class="color555">用户名：</td>
+                    <td class="color555" ><input type="text" th:value="${Member.username}" name="username" readonly="readonly"></td>
+
+
+                </tr>
+                <tr>
+                    <td align="right" class="color555">手手机号码：</td>
+                    <td class="color555">
+                        <input class="my_info_content_care_table_text" th:value="${Member.phone}" name="phone" type="text">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="color555">真实姓名：</td>
+                    <td class="color555"><input class="my_info_content_care_table_text" name="realName"
+                                                th:value="${Member.realName}" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="color555">班级：</td>
+                    <td class="color555"><input class="my_info_content_care_table_text" th:value="${Member.className}"
+                                                name="classname" type="text">
+                        <span class="color959595 margin_left10 font_size12"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="90" align="right" class="color555">学号：</td>
+                    <td class="color555" th:text="${Member.stuId}">20161508201<span
+                            class="colorCA1E37 margin_left10 font_size12">不能修改</span></td>
+                </tr>
+                <tr>
+                    <td align="right" class="color555">注册时间：</td>
+                    <td class="color555" th:text="${Member.entryTime}">
+                        <span class="color959595 margin_left10 font_size12">友情提示：无法修改</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="color555">个人简介：</td>
+                    <td class="color555"><input class="my_info_content_care_table_text" th:value="${Member.jianjie}"
+                                                name="jianjie" type="text">
+                        <span class="color959595 margin_left10 font_size12"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right" class="color555">性别：</td>
+                    <td class="color555"><input class="my_info_content_care_table_text" th:value="${Member.sex}"
+                                                name="sex" type="text">
+                        <span class="color959595 margin_left10 font_size12"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="color555">本月签到数：</td>
+                    <td class="color555" th:text="${Member.count}"/>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td align="center" class="color555" colspan="2"><input class="my_info_content_care_table_submit" name="" type="submit" value="保    存"></td>
+                </tr>
+                </tbody>
+            </table>
+            </form>
+
+            <input type="hidden" th>
+        </div>
+    </div>
+
+</div>
+
+
+
+<footer >
+    <div class="container">
+        <div class="row">
+            <div class="ac-gf-footer-legal">
+                <div class="footer-legal-links">
+                    <a href="index.html">首页</a>
+                    <div class="bor-line"></div>
+                    <a href="#">产品服务</a>
+                    <div class="bor-line"></div>
+                    <a href="#">解决方案</a>
+                    <div class="bor-line"></div>
+                    <a href="news.html">新闻中心</a>
+                    <div class="bor-line"></div>
+                    <a href="#">关于我们</a>
+                </div>
+                <div class="footer-beizhu">Copyright © 2018 VR科技有限公司 鲁ICP备111111111号-8</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

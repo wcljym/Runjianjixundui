@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩列表</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">软件集训队后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="/admin/list_all">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a th:href="@{/list_Announcement}" href="">公告管理</a></dd>
+                    <dd><a href="/admin/authorization">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li sec:authorize="isAuthenticated()" class="layui-nav-item">
+                <a th:href="'/' + ${#authentication.name} + '/personal'">
+                    <img src="http://t.cn/RCzsdCq"
+                         th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}"
+                         class="layui-nav-img">
+                    <span sec:authentication="name"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <!--<li class="layui-nav-item"><a href="/signOut">退了</a></li>-->
+            <li class="layui-nav-item">
+                <!--<form th:action="@{/logout}" method="post">-->
+                <!--<button class="layui-btn layui-btn-primary layui-btn-sm" type="submit">注销</button>-->
+                <!--</form>-->
+                <form name='form1' th:action="@{/logout}" method="post">
+                    <a href='javascript:document.form1.submit();'>注销</a>
+                </form>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">出勤管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a  th:href="@{/admin/qiandao}" href="javascript:;">签到信息</a></dd>
+                        <dd><a th:href="@{/admin/list_leavess}" href="javascript:;">在线请假</a></dd>
+                        <dd><a href="javascript:;">月考勤</a></dd>
+
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">成绩管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/to_save_grade}" href="javascript:;">成绩录入</a></dd>
+                        <dd><a th:href="@{/list_grade}" href="javascript:;">详细成绩</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">资讯管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/admin/make_news}" href="">资讯发布</a></dd>
+                        <dd><a th:href="@{/admin/list_news}" href="javascript:;">资讯列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">资源管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/save_resource}" href="">资源上传</a></dd>
+                        <dd><a th:href="@{/list_resource}" href="javascript:;">资源列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">关于我们</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/admin/save_us_info}" href="">上传信息</a></dd>
+                        <dd><a th:href="@{/admin/list_us_info}" href="javascript:;">信息列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <div class="layui-fluid">
+
+                <table class="layui-hide" id="test" lay-filter="teamTool"></table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        成龙
+        <!-- 底部固定区域 -->
+        @滁州职业技术学院.16软件二班.王成龙
+    </div>
+</div>
+<script th:src="@{../layui/jquery-3.3.1.min.js}"></script>
+<script th:src="@{../layui/layui.js}" src="../layui/layui.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del" >查看</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="allow">允许请假</a>
+</script>
+>
+<script>
+    //JavaScript代码区域
+    layui.use(['element', 'layer', 'table', 'laypage', 'form', 'util'], function () {
+        var element = layui.element,
+            table = layui.table,
+            layer = layui.layer,//弹层
+            form = layui.form,
+            laypage = layui.laypage;
+        var headers = {};
+        headers['X-CSRF-TOKEN'] = "[[${_csrf.token}]]";
+        var tableIns = table.render({
+            elem: '#test'
+            , url: '/listAll_leavess'
+            , cellMinWidth: 300 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , page: true //开启分页
+            , limit: 10
+            , limits: [10, 20]
+            , toolbar: true
+            , loading: true
+            , cols: [
+                [
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', width: 150, title: 'ID', sort: true, align: 'center'}
+                    , {field: 'stuId', width: 150, title: '学号', align: 'center'}
+                    , {field: 'realName', width: 150, title: '姓名', align: 'center'}
+                    , {field: 'className', width: 150, title: '班级', sort: true, align: 'center'}
+                    , {field: 'star_date', width: 150, title: '日期', align: 'center'}
+                    , {field: 'remarks', width: 150, title: '备注信息', align: 'center'}
+                    , {field: 'state', width: 150, title: '当前状态', align: 'center'
+
+                }
+                    , {field: '', width: 180, title: '操作', toolbar: '#barDemo', align: 'center'}
+                ]
+            ]
+
+            ,done: function(res, curr, count){
+                //如果是异步请求数据方式，res即为你接口返回的信息。
+                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                //console.log(res);
+                //得到当前页码
+                //console.log(curr);
+                //得到数据总量
+                //console.log(count);
+                $(".layui-table-box").find("[data-field='id']").css("display","none");
+
+                $("[data-field='state']").children().each(function(){
+                    if($(this).text()=='1'){
+                        $(this).text("已批准")
+                    }else if($(this).text()=='0'){
+                        $(this).text("未批准")
+                    }
+                });
+
+
+                pageCurr=curr;
+            }
+
+        });
+
+
+        //监听工具条
+        table.on('tool(teamTool)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+            if (layEvent === 'del') {
+                layer.open({
+                    type: 2,
+                    title: '请假条',
+                    maxmin: true,
+                    anim: 6,
+                    area: ['1000px', '600px'],
+                    shadeClose: false, //点击遮罩关闭s
+                    content: '/'+data.id+'/search_leavess',
+                });
+            } else if (layEvent === 'allow') { //编辑
+
+                $.ajax({
+                    url: "/allow_leaves",
+                    type: "POST",
+                    data: {"id": data.id},
+                    headers: headers,
+                    success: function (data) {
+                        if (data.code == 200) {
+
+                            layer.msg("已批准", {icon: 6});
+                            tableIns.reload();
+                        } else {
+                            layer.msg("已经批准，请勿重复操作", {icon: 5});
+                        }
+                    }
+                });
+                return false;
+
+
+            }
+
+
+
+        });
+
+
+    });
+</script>
+
+
+</body>
+</body>
+</html>

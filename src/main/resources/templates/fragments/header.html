@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" data-th-fragment="header">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+
+    <link rel="stylesheet" th:href="@{../bootstrap-3.3.7-dist/css/bootstrap.min.css}"
+          href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{../layui/css/layui.css}" href="../layui/css/layui.css">
+    <link th:href="@{../index/vendor/bootstrap/css/bootstrap.min.css}" href="vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link th:href="@{../index/vendor/video.js/video-js.min.css}" href="vendor/video.js/video-js.min.css"
+          rel="stylesheet">
+    <link th:href="@{../index/vendor/font-awesome/css/font-awesome.min.css}"
+          href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link th:href="@{../index/vendor/magnific-popup/magnific-popup.css}" href="vendor/magnific-popup/magnific-popup.css"
+          rel="stylesheet">
+    <link th:href="@{../index/vendor/animate.css/animate.min.css}" href="vendor/animate.css/animate.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../index/vendor/device-mockups/device-mockups.min.css}"
+          href="vendor/device-mockups/device-mockups.min.css">
+    <link th:href="@{../index/css/style.min.css}" href="css/style.min.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
+    <link th:href="@{../about/css/timeline.css}" href="css/timeline.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{../about/js/modernizr.js}" src="js/modernizr.js"></script>
+    <script type="text/javascript" th:src="@{../about/js/js/jquery-1.8.3.min.js}" src="js/jquery-1.8.3.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.bootcss.com/cropper/3.1.3/cropper.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        #user-photo {
+            width: 100px;
+            height: 100px;
+            margin-top: 10px;
+        }
+
+        #photo {
+            max-width: 100%;
+            max-height: 350px;
+        }
+
+        .img-preview-box {
+            text-align: center;
+        }
+
+        .img-preview-box > div {
+            display: inline-block;;
+            margin-right: 10px;
+        }
+
+        .img-preview {
+            overflow: hidden;
+        }
+
+        .img-preview-box .img-preview-lg {
+            width: 150px;
+            height: 150px;
+        }
+
+        .img-preview-box .img-preview-md {
+            width: 100px;
+            height: 100px;
+        }
+
+        .img-preview-box .img-preview-sm {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
+
+
+    <link th:href="@{../recource1/font-awesome/css/font-awesome.min.css}" href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link  th:href="@{../recource1/css/newblue.css}" href="css/newblue.css" rel="stylesheet">
+
+
+    <script th:src="@{../recource1/js/ie-emulation-modes-warning.js}" src="js/ie-emulation-modes-warning.js"></script>
+
+
+
+
+
+    <link th:href="@{../pro/css/bootstrap.min.css}" href="css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{../pro/css/style.css}" href="css/style.css" rel="stylesheet">
+    <link th:href="@{../pro/css/crowdfunding.css}" href="css/crowdfunding.css" rel="stylesheet">
+    <link th:href="@{../pro/css/crowdfunding.center/my_info.css}" href="css/crowdfunding.center/my_info.css"
+          rel="stylesheet">
+    <link th:href="@{../pro/css/crowdfunding.center/make_head.css}" href="css/crowdfunding.center/make_head.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{../announcenment/announcement.css}" type="text/css" href="statics/css/style.css"/>
+    <link rel="stylesheet" th:href="@{../resource/css/default.css}" href="css/default.min.css?t=227"/>
+    <link rel="stylesheet" th:href="@{../search/css/style.css}" href="css/style.css" type="text/css"/>
+    <link th:href="@{../news/style.css}" href="css/style.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{../news/daohang.css}" href="css/style2.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{../news/jquery.min.js}" src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" th:src="@{../news/jquery.SuperSlide.2.1.1.js}"
+            src="js/jquery.SuperSlide.2.1.1.js"></script>
+
+    <script type="text/css">
+        #navv {
+
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10000;
+            width: 100%;
+            height: 100px;
+
+        }
+
+    </script>
+</head>
+<body>
+
+
+<ul class="layui-nav" id="navv">
+
+
+    <li class="layui-nav-item">
+        <a th:href="@{/index}">首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a th:href="@{/resource}">资源社区</a>
+    </li>
+    <li class="layui-nav-item">
+        <a th:href="@{/Announcement}">公告</a>
+    </li>
+    <li class="layui-nav-item">
+        <a th:href="@{/news}">最新资讯</a>
+    </li>
+    <li sec:authorize="isAnonymous()" class="layui-nav-item">
+        <a th:href="@{/toregistered}">注册</a>
+    </li>
+
+
+    <li class="layui-nav-item">
+        <a th:href="@{/listAbout}" href="">关于我们<span class="layui-badge-dot"></span></a>
+    </li>
+
+
+    <ul class="layui-nav layui-layout-right " sec:authorize="isAuthenticated()">
+        <li class="layui-nav-item " lay-unselect="">
+
+
+            <a th:href="'/' + ${#authentication.name} + '/personal'">
+                <img id="touxiang_image" src="//t.cn/RCzsdCq" class="layui-nav-img"
+                     th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}">
+                <!--<span id="username" name="username" sec:authentication="name"></span>-->
+                <span id="username"
+                      th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"></span>
+
+
+            </a>
+
+        </li>
+
+        <li class="layui-nav-item">
+            <form name='form1' th:action="@{/logout}" method="post">
+                <a href='javascript:document.form1.submit();'>注销</a>
+            </form>
+
+        </li>
+        <li class="layui-nav-item">
+
+            <!--<a   th:href="'/' + ${#authentication.name} + '/Qiandao'">签到</a>-->
+            <a id="qiandao" href="javascript:void(0)" onclick="Test()">签到</a>
+        </li>
+        <li class="layui-nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+
+            <!--<a   th:href="'/' + ${#authentication.name} + '/Qiandao'">签到</a>-->
+            <a id="fanhui" th:href="@{/admin/admin_index}" href="javascript:void(0)">返回</a>
+        </li>
+    </ul>
+
+    <ul class="layui-nav layui-layout-right">
+        <li sec:authorize="isAnonymous()" class="layui-nav-item">
+            <a href="/login" type="submit">登录</a>
+        </li>
+    </ul>
+
+</ul>
+
+
+<button type="button" hidden="hidden " id="btn"></button>
+
+<script src="../layui/layui.js" charset="utf-8"></script>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function (elem) {
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    function Test() {
+        var username = document.getElementById("username").innerText;
+        var headers = {};
+        headers['X-CSRF-TOKEN'] = "[[${_csrf.token}]]";
+        $.ajax(
+            {
+                url: '/Qiandao',
+                data: {username: username},
+                async: true,
+                headers: headers,
+                type: "POST",
+                dataType: "json",
+                success: function (result) {
+                    var aa = document.getElementById("qiandao");
+                    if (result.code == 200) {
+                        alert("签到成功");
+                        aa.innerText = "已签到";
+                    } else {
+
+                        alert("已经签到，请勿重签");
+                    }
+
+                }
+
+            });
+
+
+    }
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var username = document.getElementById("username").innerText;
+        var headers = {};
+        headers['X-CSRF-TOKEN'] = "[[${_csrf.token}]]";
+        $.ajax(
+            {
+                url: '/ckeckQiandao',
+                data: {username: username},
+                async: true,
+                headers: headers,
+                type: "POST",
+                dataType: "json",
+                success: function (result) {
+                    var aa = document.getElementById("qiandao");
+                    if (result.code == 200) {
+                        aa.innerText = "已签到";
+                    }
+
+                }
+
+            });
+    });
+
+
+</script>
+
+
+</body>
+</html>

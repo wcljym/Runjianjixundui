@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+    <meta charset="UTF-8">
+    <link    th:href="@{../news/style.css}" href="css/style.css" rel="stylesheet" type="text/css" />
+    <title>新闻详情</title>
+</head>
+
+<body>
+
+
+<div class="container1" th:object="${announcement}">
+    <div class="center1"><img  th:src="@{../news/banner2.jpg}" src="images/banner2.jpg" class="banner-img" /></div>
+    <div class="w1200">
+        <section class="container1">
+            <div class="vr_detail">
+                <h1 th:text="*{title}"></h1>
+                <h2>浏览量:<span th:text="*{date}">2018-05-24</span> 发布人：<span th:text="*{publisher}"></span> </h2>
+                <article  id="con">
+                    <input  id="content" type="hidden" th:value="*{content}">
+                </article>
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="ac-gf-footer-legal">
+                <div class="footer-legal-links">
+                    <a href="index.html">首页</a>
+                    <div class="bor-line"></div>
+                    <a href="#">产品服务</a>
+                    <div class="bor-line"></div>
+                    <a href="#">解决方案</a>
+                    <div class="bor-line"></div>
+                    <a href="news.html">新闻中心</a>
+                    <div class="bor-line"></div>
+                    <a href="#">关于我们</a>
+                </div>
+                <div class="footer-beizhu">Copyright © 2018 VR科技有限公司 鲁ICP备111111111号-8</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script th:src="@{../layui/jquery-3.3.1.min.js}"></script>
+<script>
+    var co=$("#content").val();
+    document.getElementById("con").innerHTML =co;
+
+
+</script>
+</body>
+</html>

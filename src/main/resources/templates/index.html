@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: header}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Home</title>
+    <link th:href="@{../index/vendor/bootstrap/css/bootstrap.min.css}" href="vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link th:href="@{../index/vendor/video.js/video-js.min.css}" href="vendor/video.js/video-js.min.css"
+          rel="stylesheet">
+    <link th:href="@{../index/vendor/font-awesome/css/font-awesome.min.css}"
+          href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link th:href="@{../index/vendor/magnific-popup/magnific-popup.css}" href="vendor/magnific-popup/magnific-popup.css"
+          rel="stylesheet">
+    <link th:href="@{../index/vendor/animate.css/animate.min.css}" href="vendor/animate.css/animate.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../index/vendor/device-mockups/device-mockups.min.css}"
+          href="vendor/device-mockups/device-mockups.min.css">
+
+    <link th:href="@{../index/css/style.min.css}" href="css/style.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-scroll-animation="true">
+<div id="spinner">
+    <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+    </div>
+</div>
+<header class="bottom-laptop" id="bottom-laptop">
+    <div class="container">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 class="wow fadeInUp">滁州职业技术学院 &nbsp;&nbsp; 软件集训队</h1>
+            </div>
+        </div>
+        <div class="col-sm-12 wow fadeInUp" data-wow-delay="0.6s">
+            <div class="device-mockup macbook_2015 landscape black">
+                <div class="device">
+                    <div class="screen">
+                        <img th:src="@{../index/img/dark-finder.png}" src="img/dark-finder.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="partners no-padding">
+    <div class="container">
+        <div class="partner-single wow fadeInUp" data-wow-delay="0.1s">
+            <!--<img th:src="@{../index/img/partners/xsteel.svg}" src="img/partners/xsteel.svg" class="inject-inline"-->
+                 <!--alt="XSteel logo">-->
+        </div>
+        <div class="partner-single wow fadeInUp" data-wow-delay="0.2s">
+            <!--<img th:src="@{../index/img/partners/sc-johnson-wax-2.svg}" src="img/partners/sc-johnson-wax-2.svg"-->
+                 <!--class="inject-inline" alt="Sc Johnson logo">-->
+        </div>
+        <div class="partner-single wow fadeInUp" data-wow-delay="0.3s">
+            <!--<img th:src="@{../index/img/partners/binom.svg}" src="img/partners/binom.svg" class="inject-inline"-->
+                 <!--alt="Binom logo">-->
+        </div>
+        <div class="partner-single wow fadeInUp" data-wow-delay="0.4s">
+            <!--<img th:src="@{../index/img/partners/binom.svg}" src="img/partners/binom.svg" class="inject-inline"-->
+                 <!--alt="Binom logo">-->
+        </div>
+        <div class="partner-single wow fadeInUp" data-wow-delay="0.5s">
+            <!--<img th:src="@{../index/img/partners/sc-johnson-wax-2.svg}" src="img/partners/sc-johnson-wax-2.svg"-->
+                 <!--class="inject-inline" alt="Sc Johnson logo">-->
+        </div>
+        <div class="partner-single wow fadeInUp" data-wow-delay="0.6s">
+            <!--<img th:src="@{../index/img/partners/xsteel.svg}" src="img/partners/xsteel.svg" class="inject-inline"-->
+                 <!--alt="XSteel logo">-->
+        </div>
+    </div>
+</section>
+<section class="split-fullscreen no-padding bg-gray">
+    <div class="drop-margins">
+        <div class="row same-height-row">
+            <div class="col-sm-6 image-section wow fadeInLeft">
+                <img th:src="@{../about/images/psb (1).jpg}" src="img/space-1.jpg" alt="">
+            </div>
+            <div class="col-sm-6 content-section fadeInRight">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <div class="title-box-icon title-about">
+                                <img th:src="@{../index/img/icons/summer/Sun.svg}" src="img/icons/summer/Sun.svg"
+                                     alt="">
+                                <h3 class="title">What we do?</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="feat-description text-center">
+                            <h4 class="text-muted">滁州职业技术学院软件集训队</h4>
+                            <p class="text-muted">  我们来自滁州职业技术学院软件集训队，我们是一帮热爱学习、热爱钻研、热爱编程的人。
+                                我们来自滁州职业技术学院软件集训队，我们是一帮热爱学习、热爱钻研、热爱编程的人。我们来自滁州职业技术学院软件集训队，我们是一帮热爱学习、热爱钻研、热爱编程的人。
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row same-height-row">
+            <div class="col-md-push-6 col-sm-6 image-section fadeInLeft">
+                <img th:src="@{../about/images/psb.jpg}" src="img/space-2.jpg" alt="">
+            </div>
+            <div class="col-md-pull-6 col-sm-6 content-section fadeInRight">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-center">
+                            <div class="title-box-icon title-about">
+                                <img th:src="@{../index/img/icons/summer/Watermelon.svg}"
+                                     src="img/icons/summer/Watermelon.svg" alt="">
+                                <h3 class="title">Why we do?</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="feat-description text-center">
+                            <h4 class="text-muted">滁州职业技术学院软件集训队</h4>
+                            <p class="text-muted">我们利用课余的时间来学习软件编程，提高自己的技术水平，共同进步共同发展。提高本专业的就业率。
+                                我们利用课余的时间来学习软件编程，提高自己的技术水平，共同进步共同发展。提高本专业的就业率。
+                                我们利用课余的时间来学习软件编程，提高自己的技术水平，共同进步共同发展。提高本专业的就业率。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="video-1 no-padding">
+    <video id="my_video_1" class="video-js vjs-default-skin" width="640px" height="267px" controls preload="none"
+           poster='../index/img/design-video-snapshot.png'
+           data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+        <source th:src="@{../index/video/Design.mp4}" type='video/mp4'/>
+        <div class="vjx-poster"></div>
+    </video>
+</section>
+<section class="faqs">
+    <div class="container">
+        <div class="row section-heading">
+            <h2>Q&A</h2>
+            <p>这里可能有一些问题是你们想知道的！
+            </p>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-sm-6 faq wow fadeInUp">
+                <h4>滁州职业技术学院</h4>
+                <p>  滁州职业技术学院位于安徽省滁州市，坐落在国家4A级风景名胜区---琅琊山下，是安徽省人民政府举办的综合性普通高等职业院校
+                    学院成立于2002年7月，占地面积1140亩，建筑面积31万平方米。学校是长三角地区高职院校创新创业实践联盟副理事长单位、国家
+                    建设类技能型紧缺人才培养试点高校、地方技能型高水平大学”建设单位、教育部优质专科学校建设单位、省级示范性高等职业院校。
+                  </p>
+            </div>
+            <div class="col-sm-6 faq wow fadeInUp">
+                <h4>什么软件集训集训队？</h4>
+                <p>滁州职业技术学院位于安徽省滁州市，坐落在国家4A级风景名胜区---琅琊山下，是安徽省人民政府举办的综合性普通高等职业院校
+                    学院成立于2002年7月，占地面积1140亩，建筑面积31万平方米。学校是长三角地区高职院校创新创业实践联盟副理事长单位、国家
+                    建设类技能型紧缺人才培养试点高校、地方技能型高水平大学”建设单位、教育部优质专科学校建设单位、省级示范性高等职业院校。</p>
+            </div>
+            <div class="col-sm-6 faq wow fadeInUp" data-wow-delay="0.3s">
+                <h4>滁州职业技术学院</h4>
+                <p>滁州职业技术学院位于安徽省滁州市，坐落在国家4A级风景名胜区---琅琊山下，是安徽省人民政府举办的综合性普通高等职业院校
+                    学院成立于2002年7月，占地面积1140亩，建筑面积31万平方米。学校是长三角地区高职院校创新创业实践联盟副理事长单位、国家
+                    建设类技能型紧缺人才培养试点高校、地方技能型高水平大学”建设单位、教育部优质专科学校建设单位、省级示范性高等职业院校。</p>
+            </div>
+            <div class="col-sm-6 faq wow fadeInUp" data-wow-delay="0.3s">
+                <h4>什么软件集训集训队？</h4>
+                <p>滁州职业技术学院位于安徽省滁州市，坐落在国家4A级风景名胜区---琅琊山下，是安徽省人民政府举办的综合性普通高等职业院校
+                    学院成立于2002年7月，占地面积1140亩，建筑面积31万平方米。学校是长三角地区高职院校创新创业实践联盟副理事长单位、国家
+                    建设类技能型紧缺人才培养试点高校、地方技能型高水平大学”建设单位、教育部优质专科学校建设单位、省级示范性高等职业院校。</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="no-padding testimonials testimonials--default" id="feedback">
+    <div class="gradient-cover">
+        <div class="container">
+            <div class="quotes">
+                <div  th:each="admin,indexInc :${list1}" th:id="person+'-'+(${indexInc.index}+1)+'-'+quote"  th:class="${indexInc.index}+1==1? 'single-quote single-quote&#45;&#45;active' : 'single-quote'" >
+                    <img th:src="${admin.avatar}" src="img/people/peter.png" alt="Mark avatar"
+                         class="person-avatar--lg wow fadeIn" th:class="${indexInc.index}+1==1? 'person-avatar--lg wow fadeIn' : 'person-avatar&#45;&#45;lg wow fadeIn'" >
+                    <p class="quote wow fadeIn " data-wow-delay="0.3" th:text="${admin.jianjie}">
+                        “Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac cras at sem
+                        cras per Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac
+                        cras at sem cras per”
+                    </p>
+                    <span class="person-name wow fadeIn" data-wow-delay="0.6" th:text="${admin.realName}">Peter - Googlehcdhbcdh</span>
+                </div>
+
+                <!--<div class="single-quote" id="person-2-quote">-->
+                    <!--<img th:src="@{../index/img/people/oleg.png}" src="img/people/oleg.png" alt="Mark avatar"-->
+                         <!--class="person-avatar&#45;&#45;lg wow fadeIn">-->
+                    <!--<p class="quote wow fadeIn" data-wow-delay="0.3">-->
+                        <!--“Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac cras at sem-->
+                        <!--cras per Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac-->
+                        <!--cras at sem cras per”-->
+                    <!--</p>-->
+                    <!--<span class="person-name wow fadeIn" data-wow-delay="0.6">-->
+	  <!--Oleg - Googlehcdhbcdh-->
+	<!--</span>-->
+                <!--</div>-->
+                <!--<div class="single-quote single-quote&#45;&#45;active" id="person-3-quote">-->
+                    <!--<img th:src="@{../index/img/people/mark.png}" src="img/people/mark.png" alt="Mark avatar"-->
+                         <!--class="person-avatar&#45;&#45;lg wow fadeIn">-->
+                    <!--<p class="quote wow fadeIn" data-wow-delay="0.3">-->
+                        <!--“Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac cras at sem-->
+                        <!--cras per Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac-->
+                        <!--cras at sem cras per”-->
+                    <!--</p>-->
+                    <!--<span class="person-name wow fadeIn" data-wow-delay="0.6">-->
+	  <!--Mark - Googlehcdhbcdh-->
+	<!--</span>-->
+                <!--</div>-->
+                <!--<div class="single-quote" id="person-4-quote">-->
+                    <!--<img th:src="@{../index/img/people/jason.png}" src="img/people/jason.png" alt="Mark avatar"-->
+                         <!--class="person-avatar&#45;&#45;lg wow fadeIn">-->
+                    <!--<p class="quote wow fadeIn" data-wow-delay="0.3">-->
+                        <!--“Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac cras at sem-->
+                        <!--cras per Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac-->
+                        <!--cras at sem cras per”-->
+                    <!--</p>-->
+                    <!--<span class="person-name wow fadeIn" data-wow-delay="0.6">-->
+	  <!--Jason - Googlehcdhbcdh-->
+	<!--</span>-->
+                <!--</div>-->
+                <!--<div class="single-quote" id="person-5-quote">-->
+                    <!--<img th:src="@{../index/img/people/maria.png}" src="img/people/maria.png" alt="Mark avatar"-->
+                         <!--class="person-avatar&#45;&#45;lg wow fadeIn">-->
+                    <!--<p class="quote wow fadeIn" data-wow-delay="0.3">-->
+                        <!--“Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac cras at sem-->
+                        <!--cras per Sed risus feugiat fusce eu sit conubia venenatis aliquet nisl cras eu adipiscing ac-->
+                        <!--cras at sem cras per”-->
+                    <!--</p>-->
+                    <!--<span class="person-name wow fadeIn" data-wow-delay="0.6">-->
+	  <!--Maria - Googlehcdhbcdh-->
+	<!--</span>-->
+                <!--</div>-->
+            </div>
+            <hr class="divider"/>
+
+            <div class="person-selector">
+                <div  data-wow-delay="0.3" th:each="admin,indexInc :${list1}" th:id="person+'-'+(${indexInc.index}+1)" th:class="${indexInc.index}+1==1?  'person wow fadeInUp person&#45;&#45;active' : 'person wow fadeInUp'">
+                    <img th:src="${admin.avatar}" src="img/people/peter.png" alt="Peter">
+                </div>
+                <!--<div class="person wow fadeInUp" id="person-2" data-wow-delay="0.3">-->
+                    <!--<img th:src="@{../index/img/people/oleg.png}" src="img/people/oleg.png" alt="Oleg">-->
+                <!--</div>-->
+                <!--<div class="person wow fadeInUp person&#45;&#45;active" id="person-3">-->
+                    <!--<img th:src="@{../index/img/people/mark.png}" src="img/people/mark.png" alt="Mark">-->
+                <!--</div>-->
+                <!--<div class="person wow fadeInUp" id="person-4" data-wow-delay="0.3">-->
+                    <!--<img th:src="@{../index/img/people/jason.png}" src="img/people/jason.png" alt="Jason">-->
+                <!--</div>-->
+                <!--<div class="person wow fadeInUp" id="person-5" data-wow-delay="0.6">-->
+                    <!--<img th:src="@{../index/img/people/maria.png}" src="img/people/maria.png" alt="Maria">-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="splash splash--gray">
+    <h1 class="heading-text">
+        让我们一起创造属于我们自己的奇迹 !
+    </h1>
+
+
+</section>
+
+<footer class="footer footer--light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <h5>首页</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#about">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="#features">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="#pricing">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="#faq">关于我们</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <h5>首页</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <h5>首页</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+
+                    <li>
+                        <a href="">关于我们</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <h5>首页</h5>
+                <address>
+                    滁州职业技术学院<br>
+                    综合楼Z305 <br>
+                    18855073373<br>
+                    E: <a href="mailto:#">1376834589@qq.com</a>
+                </address>
+            </div>
+
+        </div>
+
+        <div class="row bottom-row">
+            <div class="col-sm-12">
+                <div class="footer-alt text-center">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script th:src="@{../index/vendor/jquery/jquery.min.js}" src="vendor/jquery/jquery.min.js"></script>
+<script th:src="@{../index/vendor/video.js/video.min.js}" src="vendor/video.js/video.min.js"></script>
+<script th:src="@{../index/vendor/bootstrap/js/bootstrap.min.js}" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script th:src="@{../index/js/jquery.easing.min.js}" src="js/jquery.easing.min.js"></script>
+<script th:src="@{../index/vendor/scrollreveal/scrollreveal.min.js}"
+        src="vendor/scrollreveal/scrollreveal.min.js"></script>
+<script th:src="@{../index/vendor/magnific-popup/jquery.magnific-popup.min.js}"
+        src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script th:src="@{../index/vendor/svg-injector/svg-injector.min.js}"
+        src="vendor/svg-injector/svg-injector.min.js"></script>
+<script th:src="@{../index/vendor/wowjs/wow.min.js}" src="vendor/wowjs/wow.min.js"></script>
+
+<script th:src="@{../index/js/index.min.js}" src="js/index.min.js"></script>
+</body>
+
+
+
+
+</html>

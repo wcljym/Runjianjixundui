@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>用户授权</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <style type="text/css">
+        .layui-table-cell{
+            height:36px;
+            line-height: 36px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">软件集训队后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="/admin/list_all">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a th:href="@{/list_Announcement}" href="">公告管理</a></dd>
+                    <dd><a href="/admin/authorization">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li sec:authorize="isAuthenticated()" class="layui-nav-item">
+                <a th:href="'/' + ${#authentication.name} + '/personal'">
+                    <img src="http://t.cn/RCzsdCq" th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}" class="layui-nav-img">
+                    <span sec:authentication="name"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <!--<form th:action="@{/logout}" method="post">-->
+                    <!--<button class="layui-btn layui-btn-primary layui-btn-sm" type="submit">注销</button>-->
+                <!--</form>-->
+                <form name='form1'  th:action="@{/logout}" method="post">
+                    <a href='javascript:document.form1.submit();'>注销</a>
+                </form>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">出勤管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a  th:href="@{/admin/qiandao}" href="javascript:;">签到信息</a></dd>
+                        <dd><a th:href="@{/admin/list_leavess}" href="javascript:;">在线请假</a></dd>
+                        <dd><a href="javascript:;">月考勤</a></dd>
+
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">成绩管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/to_save_grade}" href="javascript:;">成绩录入</a></dd>
+                        <dd><a th:href="@{/list_grade}" href="javascript:;">详细成绩</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">资讯管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/admin/make_news}" href="">资讯发布</a></dd>
+                        <dd><a th:href="@{/admin/list_news}" href="javascript:;">资讯列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">资源管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/save_resource}" href="">资源上传</a></dd>
+                        <dd><a th:href="@{/list_resource}" href="javascript:;">资源列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a href="javascript:;">关于我们</a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/admin/save_us_info}" href="">上传信息</a></dd>
+                        <dd><a th:href="@{/admin/list_us_info}" href="javascript:;">信息列表</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 内容主体区域 -->
+    <div class="layui-body">
+        <div class="layui-fluid">
+            <table class="layui-hide" id="test"  lay-filter="teamTool"></table>
+        </div>
+
+
+    </div>
+
+    <div class="layui-footer">
+       @滁州职业技术学院.16软件二班.王成龙
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">激活</a>
+</script>
+<script src="../layui/layui.js"></script>
+<script>
+
+
+    //JavaScript代码区域
+    layui.use(['element', 'table','layer','laypage'], function () {
+        var element = layui.element,
+            table = layui.table,
+            layer = layui.layer,//弹层
+            laypage = layui.laypage;
+
+
+        var tableIns=table.render({
+            elem: '#test'
+            , url: '/admin/list_authorization'
+            , cellMinWidth: 300 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , page: true //开启分页
+            , limit: 10
+            , limits: [10, 20]
+            , toolbar: true
+            , loading: true
+            , cols: [
+                [
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', width: 150, title: 'ID', sort: true, align: 'center'}
+                    , {field: 'realName', width: 150, title: '姓名', align: 'center'}
+                    , {field: 'stuId', width: 150, title: '学号', sort: true, align: 'center'}
+                    , {field: 'username', width: 150, title: '用户名', align: 'center'}
+                    , {field: 'phone', width: 150, title: '联系电话', align: 'center'}
+                    , {
+                    field: 'roles', width: 180, title: '角色', templet: function (d) {
+
+                        if (d.roles.length > 1) {
+                            var a = " ";
+                            for (var i = 0; i < d.roles.length; i++) {
+                                a = a + d.roles[i].name + ',';
+                            }
+
+
+                            if (a.length > 0) {
+                                a = a.substr(0, a.length - 1);
+                            }
+                            return '<div>' + a + '</div>';
+
+                        } else {
+
+                            return '<div>' + d.roles[0].name + '</div>'
+                        }
+
+                    },
+                    align: 'center'
+                }
+                    , {field: 'entryTime', width: 150, title: '时间', align: 'center'}
+                    , {field: '', width: 150, title: '操作', toolbar: '#barDemo', align: 'center'}
+
+
+                ]
+            ]
+
+
+        });
+//监听工具条
+        table.on('tool(teamTool)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+            console.log("id:"+data.id);
+            // if(layEvent === 'detail'){ //查看
+            //     //do something
+            //     layer.msg('ID：'+ data.id + ' 的查看操操作');
+            // } else if(layEvent === 'del'){ //删除
+            //     layer.confirm('确认删除人员信息？', function(index){
+            //         //do something
+            //         layer.close(index);
+            //     });
+            // } else
+             if(layEvent === 'edit'){ //编辑
+                layer.confirm('是否确定激活', function(index){
+                    console.log(data);
+                    var headers = {};
+                    headers['X-CSRF-TOKEN'] = "[[${_csrf.token}]]";
+                    $.ajax({
+                        url: "/admin/jihuo",
+                        type: "POST",
+                        data:{"id":data.id},
+                        headers:headers,
+                        dataType: "json",
+                        success: function(data){
+                            if(data.code==200){
+
+                                layer.close(index);
+                                layer.msg("激活成功", {icon: 6});
+                                tableIns.reload();
+
+                            }else{
+                                layer.msg("激活失败", {icon: 5});
+                            }
+                        }
+
+                    });
+
+                });
+
+            }
+        });
+
+    });
+
+
+
+</script>
+</body>
+</html>

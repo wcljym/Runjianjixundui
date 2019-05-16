@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: header}">
+    <meta charset="UTF-8">
+    <title>最新动态</title>
+
+</head>
+
+<body >
+
+
+
+<div class="newsCenterPanel">
+    <div class="title">
+        <a href="#" target="_self">最新公告</a>
+    </div>
+    <div class="newsCenterPanel_inner">
+
+
+
+        <div class="newContentBox even" th:each="announcement,indexInc: ${list}"  th:class="${indexInc.index}%2==0? 'newContentBox even' : 'newContentBox odd'" >
+            <a hidefocus="true" href="#" th:href="'/' + ${announcement.id} + '/announcement_info'">
+                <div class="time">
+                    <p class="day" th:text="${announcement.day}">29</p>
+                    <p class="ym" th:text="${announcement.date}">2018-12</p>
+                </div>
+                <div class="newTitle" th:text="${announcement.title}">[精]科技网助力2018广州互联网+新经济发展论坛</div>
+
+                <div class="newTitleIcon"></div>
+                <div class="border"></div>
+                <div class="newContent" th:text="${announcement.introduction}">12月27日，2018广州互联网+新经济发展论坛在广州阳光酒店隆重举行，科技网作为此次论坛技术支持单位，也受邀参会共探未来共赢之路……
+                </div>
+            </a>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="ac-gf-footer-legal">
+                <div class="footer-legal-links">
+                    <a href="index.html">首页</a>
+                    <div class="bor-line"></div>
+                    <a href="#">产品服务</a>
+                    <div class="bor-line"></div>
+                    <a href="#">解决方案</a>
+                    <div class="bor-line"></div>
+                    <a href="news.html">新闻中心</a>
+                    <div class="bor-line"></div>
+                    <a href="#">关于我们</a>
+                </div>
+                <div class="footer-beizhu">Copyright © 2018 VR科技有限公司 鲁ICP备111111111号-8</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

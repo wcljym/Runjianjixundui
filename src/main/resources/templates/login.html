@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" data-th-fragment="header">
+<head >
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" th:href="@{../registered/css/reset.css}" href="../registered/css/reset.css">
+    <link rel="stylesheet" th:href="@{../registered/css/common.css}" href="../registered/css/common.css">
+    <link rel="stylesheet" th:href="@{../registered/css/font-awesome.min.css}"
+          href="../registered/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" th:href="@{../login/css/style.css}">-->
+    <!--<link rel="stylesheet" th:href="@{../layui/css/layui.css}" href="../layui/css/layui.css">-->
+    <!--<style type="text/css">-->
+    <!--body {-->
+    <!--padding-top: 50px;-->
+    <!--}-->
+    <!--.starter-template {-->
+    <!--padding: 40px 15px;-->
+    <!--text-align: center;-->
+    <!--border: #0C0C0C solid 1px;-->
+    <!--width: 500px;-->
+    <!--}-->
+    <!--</style>-->
+</head>
+<body>
+<!--<div class="starter-template" >-->
+<!--<form class="layui-form" th:action="@{/login}"  method="post">-->
+
+<!--<div class="layui-form-item">-->
+<!--<label class="layui-form-label">用户名</label>-->
+<!--<div class="layui-input-inline">-->
+<!--<input type="text" name="username" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="layui-form-item">-->
+<!--<label class="layui-form-label">密码</label>-->
+<!--<div class="layui-input-inline">-->
+<!--<input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="layui-form-item">-->
+<!--<div class="layui-input-block">-->
+<!--<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>-->
+<!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div  th:if="${loginError}">-->
+<!--<p  th:text="${errorMsg}"></p>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+
+
+<!--<hgroup>-->
+<!--<h1> <a href="http://www.chzc.edu.cn/">滁州职业技术学院</a></h1>-->
+<!--<h3>  <a href="/index">软件集训队</a></h3>-->
+<!--</hgroup>-->
+<!--<form th:action="@{/login}" method="post">-->
+<!--<div class="group">-->
+<!--<input type="text" name="username"><span class="highlight"></span><span class="bar"></span>-->
+<!--<label>用户名</label>-->
+<!--</div>-->
+<!--<div class="group">-->
+<!--<input type="password" name="password"><span class="highlight"></span><span class="bar"></span>-->
+<!--<label>密码</label>-->
+<!--</div>-->
+<!--<button type="submit" class="button buttonBlue">登录-->
+<!--<div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>-->
+<!--</button>-->
+<!--<div th:if="${loginError}">-->
+<!--<p th:text="${errorMsg}"></p>-->
+<!--</div>-->
+<!--</form>-->
+
+<!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
+
+<!--<script th:src="@{../login/js/index.js}"></script>-->
+
+
+<div class="wrap login_wrap">
+    <div class="content">
+        <div class="logo"></div>
+        <div class="login_box">
+
+            <div class="login_form">
+                <div class="login_title">
+                    <a  href="/index"><font color="#ff7f8d">软件集训队</font> </a>
+                </div>
+                <form th:action="@{/login}" method="post">
+
+                    <div class="form_text_ipt">
+                        <input name="username" type="text" placeholder="用户名">
+                    </div>
+                    <div class="ececk_warning"><span></span></div>
+                    <div class="form_text_ipt">
+                        <input name="password" type="password" placeholder="密码">
+                    </div>
+                    <div class="ececk_warning"><span></span></div>
+                    <div class="form_check_ipt">
+                        <div class="left check_left">
+                            <label><input name="remember-me" type="checkbox">记住我</label>
+                        </div>
+                        <div class="right check_right">
+                            <a href="#">忘记密码</a>
+                        </div>
+                    </div>
+                    <div class="form_btn">
+                        <button type="submit" onclick="javascript:window.location.href='#'">登录</button>
+                    </div>
+
+                    <div class="form_reg_btn">
+                        <span>还没有帐号？</span><a th:href="@{/toregistered}">马上注册</a>
+                    </div>
+                    <div class="form_reg_btn" th:if="${loginError}">
+                        <p th:text="${errorMsg}"></p>
+                    </div>
+
+                </form>
+                <div class="other_login">
+                    <div class="left other_left">
+                        <span>其它登录方式</span>
+                    </div>
+                    <div class="right other_right">
+                        <a href="#"><i class="fa fa-qq fa-2x"></i></a>
+                        <a href="#"><i class="fa fa-weixin fa-2x"></i></a>
+                        <a href="#"><i class="fa fa-weibo fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<div style="text-align:center;">
+
+</div>
+</body>
+</html>

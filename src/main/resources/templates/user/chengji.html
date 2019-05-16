@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="~{fragments/header :: header}">
+		<meta charset="UTF-8">
+		<title>我的成绩</title>
+
+	</head>
+	<body>
+	<div class="container border1 nopadding margin10">
+		<div id="vertical_navigation" class="col-lg-3 background831312 nopadding">
+			<div class="dead_pic"><img th:src="${session.SPRING_SECURITY_CONTEXT.authentication.principal.avatar}"
+									   src="img/member_center/nopic.jpg.png"><br>
+				<span class="username"
+					  th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}">用户名</span></div>
+			<div class="usertype">用户角色<br> 会员等级：</div>
+			<div class="menu">
+				<div class="menu_title"> 我的信息</div>
+				<div class="menu_list">
+					<ul class="list-unstyled">
+						<li ><img th:src="@{../pro/img/member_center/left_icon_1.png}"
+													   src="img/member_center/left_icon_1.png"> <a
+								th:href="'/' + ${#authentication.name} + '/personal'">基本信息</a></li>
+						<li id="listClick2" class="" onClick="listClick(2)"><img
+								th:src="@{../pro/img/member_center/left_icon_2.png}"
+								src="img/member_center/left_icon_2.png"> <a
+								th:href="@{/makephoto}">修改头像</a></li>
+						<li><img th:src="@{../pro/img/member_center/left_icon_3.png}"
+								 src="img/member_center/left_icon_3.png"> <a
+								th:href="@{/makepassword}">修改密码</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="menu">
+				<div class="menu_title"> 我的成绩</div>
+				<div class="menu_list">
+					<ul class="list-unstyled">
+						<li class="menu_list_on" id="listClick6" onClick="listClick(6)"><img
+								th:src="@{../pro/img/member_center/left_icon_6.png}"
+								src="img/member_center/left_icon_6.png"> <a
+								th:href="'/' + ${#authentication.name} + '/chengji'">我的成绩</a></li>
+						<li id="listClick5" class="" onClick="listClick(5)"><img
+								th:src="@{../pro/img/member_center/left_icon_5.png}"
+								src="img/member_center/left_icon_5.png"> <a
+								th:href="'/' + ${#authentication.name} + '/qingjia'">在线请假</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+				<div class="col-lg-9"></div>
+	</div>
+	</body>
+</html>
